@@ -1,0 +1,12 @@
+{
+    "name": "miclf/spotch",
+    "description": "A tool to create bookmarklet-friendly URLs from JavaScript code",
+    "license": "CC0-1.0",
+    "authors": [
+        {
+            "name": "Michaël Lecerf",
+            "email": "michael@estsurinter.net"
+        }
+    ],
+    "minimum-stability": "stable"
+}
