@@ -8,5 +8,8 @@
             "email": "michael@estsurinter.net"
         }
     ],
+    "require-dev": {
+        "phpspec/phpspec": "~2.1@dev"
+    },
     "minimum-stability": "stable"
 }
