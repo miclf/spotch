@@ -1,0 +1,4 @@
+suites:
+    test_suite:
+        namespace: Miclf\Spotch
+        psr4_prefix: Miclf\Spotch
