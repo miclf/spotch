@@ -22,7 +22,7 @@ Then, require this package in the same way as any other package:
 ```json
 "require": {
     "miclf/spotch": "dev-master"
-},
+}
 ```
 
 ## Usage
