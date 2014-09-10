@@ -19,5 +19,6 @@
             "Miclf\\Spotch\\": "src/"
         }
     },
+    "bin": ["bin/spotch"],
     "minimum-stability": "stable"
 }
