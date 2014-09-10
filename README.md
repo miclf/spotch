@@ -37,7 +37,7 @@ You can also use its classes directly.
 
 ## Tests
 
-In order to run the tests, you need to install the Composer dev dependencies. Once this is done, you can run phpspec with:
+In order to run the tests, you need to install the Composer dev dependencies. Once this is done, you can run [phpspec](http://phpspec.net/) with:
 
 ```bash
 $ vendor/bin/phpspec run
