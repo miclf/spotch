@@ -4,6 +4,10 @@ A *quick and (not too) dirty* bookmarklet generator. Use it at you own risks.
 
 All the code is placed in the public domain via a [Creative Commons Zero license](http://creativecommons.org/publicdomain/zero/1.0/).
 
+## Requirements
+
+You need the [Composer package manager](http://getcomposer.org/) to install spotch. **PHP 5.4** or any newer version is enough to run it.
+
 ## Installation
 
 Since this package is not distributed through Packagist, you need to tell Composer where to find it. Add the following to your `composer.json`:
