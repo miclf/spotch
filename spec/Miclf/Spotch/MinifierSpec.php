@@ -77,6 +77,13 @@ var baz = 'boom';"
         $this->minify($code)->shouldReturn($code);
     }
 
+    public function it_does_not_accidentally_modify_regex_containing_a_slash()
+    {
+        $code = '/foo\/bar/';
+
+        $this->minify($code)->shouldReturn($code);
+    }
+
     public function it_removes_spaces_around_if()
     {
         $this->removeOptionalSpaces(' if (foo){return baz};')
