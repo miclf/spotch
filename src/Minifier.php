@@ -54,13 +54,17 @@ class Minifier
      */
     public function minify($source)
     {
-        // We start by extracting special strings from the code
-        // in order to prevent any accidental modification.
-        $code = $this->shield($source);
+        // We start by extracting protocol strings from the code in order
+        // to prevent any accidental removal when stripping comments.
+        $code = $this->shieldPattern($source, $this->shieldRegex['protocol'], 'protocol');
 
         // Then, we remove the comments, since they’re
         // not needed by the interpreter.
         $code = $this->removeComments($code);
+
+        // After that, we extract special strings from the code
+        // in order to prevent any accidental modification.
+        $code = $this->shield($code);
 
         // We do some optional optimizations by removing
         // space characters in different situations.
