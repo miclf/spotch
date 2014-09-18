@@ -21,7 +21,7 @@ class Minifier
      */
     protected $shieldRegex = [
         'protocol' => '#(\w+://)#U',
-        'regex'    => '#(replace\(/.+/)#U',
+        'regex'    => '#((?<!\x5C)/.*(?<!\x5C)/[a-zA-Z]*)#U',
     ];
 
     /**
