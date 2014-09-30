@@ -84,6 +84,13 @@ var baz = 'boom';"
         $this->minify($code)->shouldReturn($code);
     }
 
+    public function it_does_not_accidentally_combine_keywords() {
+        $code = "else
+        if (foo)";
+
+        $this->minify($code)->shouldReturn('else if(foo)');
+    }
+
     public function it_removes_spaces_around_if()
     {
         $this->removeOptionalSpaces(' if (foo){return baz};')
