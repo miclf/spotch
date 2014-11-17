@@ -1,6 +1,6 @@
 # spotch
 
-A *quick and (not too) dirty* bookmarklet generator. Use it at you own risks.
+A *quick and (not too) dirty* bookmarklet generator. Use it at your own risks.
 
 All the code is placed in the public domain via a [Creative Commons Zero license](http://creativecommons.org/publicdomain/zero/1.0/).
 
