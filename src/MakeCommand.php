@@ -92,9 +92,9 @@ class MakeCommand extends Command
         return [
             [
                 'file',
-                InputArgument::OPTIONAL,
-                'Path to the source code to transform',
-                './script.js'
+                InputArgument::IS_ARRAY,
+                'Path(s) to the source file(s) to transform',
+                ['./script.js']
             ]
         ];
     }
