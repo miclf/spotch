@@ -32,7 +32,7 @@ class MakeCommand extends Command
      */
     public function fire()
     {
-        $code = $this->compile($this->getSource());
+        $code = $this->compile($this->getSources());
 
         if ($this->option('output')) {
             $this->save($code);
@@ -42,29 +42,49 @@ class MakeCommand extends Command
     }
 
     /**
-     * Get the source JavaScript code.
+     * Get the source files.
      *
-     * @return string
+     * @return array
      */
-    protected function getSource()
+    protected function getSources()
     {
-        $path = $this->argument('file');
+        $sources = [];
 
-        return file_get_contents($path);
+        foreach ($this->argument('file') as $path) {
+            $sources[$path] = file_get_contents($path);
+        }
+
+        return $sources;
     }
 
     /**
-     * Transform a string of JavaScript
+     * Transform strings of JavaScript
      * code to a bookmarklet.
+     *
+     * @param  array  $sources
+     * @return string
+     */
+    protected function compile($sources)
+    {
+        foreach ($sources as $path => $source) {
+            $sources[$path] = $this->minify($source);
+        }
+
+        // Concatenate the sources together.
+        $source = implode("\n", $sources);
+
+        return (new Bookmarkler)->make($source);
+    }
+
+    /**
+     * Minify a string of JavaScript code.
      *
      * @param  string  $source
      * @return string
      */
-    protected function compile($source)
+    protected function minify($source)
     {
-        $bookmarkler = new Bookmarkler;
-
-        return $bookmarkler->make($source);
+        return (new Minifier)->minify($source);
     }
 
     /**
@@ -92,9 +112,9 @@ class MakeCommand extends Command
         return [
             [
                 'file',
-                InputArgument::OPTIONAL,
-                'Path to the source code to transform',
-                './script.js'
+                InputArgument::IS_ARRAY,
+                'Path(s) to the source file(s) to transform',
+                ['./script.js']
             ]
         ];
     }
