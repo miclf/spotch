@@ -66,8 +66,14 @@ class MakeCommand extends Command
      */
     protected function compile($sources)
     {
+        // Minify the files that can be minified.
         foreach ($sources as $path => $source) {
-            $sources[$path] = $this->minify($source);
+
+            if ($this->isMinifyable($path)) {
+                $source = $this->minify($source);
+            }
+
+            $sources[$path] = $source;
         }
 
         // Concatenate the sources together.
