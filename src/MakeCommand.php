@@ -58,17 +58,22 @@ class MakeCommand extends Command
     }
 
     /**
-     * Transform a string of JavaScript
+     * Transform strings of JavaScript
      * code to a bookmarklet.
      *
-     * @param  string  $source
+     * @param  array  $sources
      * @return string
      */
-    protected function compile($source)
+    protected function compile($sources)
     {
-        $bookmarkler = new Bookmarkler;
+        foreach ($sources as $path => $source) {
+            $sources[$path] = $this->minify($source);
+        }
 
-        return $bookmarkler->make($source);
+        // Concatenate the sources together.
+        $source = implode("\n", $sources);
+
+        return (new Bookmarkler)->make($source);
     }
 
     /**
