@@ -68,6 +68,17 @@ class MakeCommand extends Command
     }
 
     /**
+     * Minify a string of JavaScript code.
+     *
+     * @param  string  $source
+     * @return string
+     */
+    protected function minify($source)
+    {
+        return (new Minifier)->minify($source);
+    }
+
+    /**
      * Write the bookmarklet to disk.
      *
      * @param  string  $code
