@@ -77,6 +77,17 @@ class MakeCommand extends Command
     }
 
     /**
+     * Check if a given file can be minified.
+     *
+     * @param  string  $path
+     * @return bool
+     */
+    protected function isMinifyable($path)
+    {
+        return !in_array($path, $this->option('no-minify'));
+    }
+
+    /**
      * Minify a string of JavaScript code.
      *
      * @param  string  $source
