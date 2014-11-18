@@ -66,14 +66,31 @@ class MakeCommand extends Command
      */
     protected function compile($sources)
     {
+        // Minify the files that can be minified.
         foreach ($sources as $path => $source) {
-            $sources[$path] = $this->minify($source);
+
+            if ($this->isMinifyable($path)) {
+                $source = $this->minify($source);
+            }
+
+            $sources[$path] = $source;
         }
 
         // Concatenate the sources together.
         $source = implode("\n", $sources);
 
         return (new Bookmarkler)->make($source);
+    }
+
+    /**
+     * Check if a given file can be minified.
+     *
+     * @param  string  $path
+     * @return bool
+     */
+    protected function isMinifyable($path)
+    {
+        return !in_array($path, $this->option('no-minify'));
     }
 
     /**
@@ -132,6 +149,13 @@ class MakeCommand extends Command
                 'o',
                 InputOption::VALUE_OPTIONAL,
                 'If set, the output will be saved to that path instead of being dumped to stdout.',
+            ],
+            [
+                'no-minify',
+                'i',
+                InputOption::VALUE_OPTIONAL|InputOption::VALUE_IS_ARRAY,
+                'List of files that should be included in the bookmarklet but not minified.',
+                [],
             ]
         ];
     }
