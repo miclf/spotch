@@ -32,7 +32,7 @@ class MakeCommand extends Command
      */
     public function fire()
     {
-        $code = $this->compile($this->getSource());
+        $code = $this->compile($this->getSources());
 
         if ($this->option('output')) {
             $this->save($code);
@@ -42,15 +42,19 @@ class MakeCommand extends Command
     }
 
     /**
-     * Get the source JavaScript code.
+     * Get the source files.
      *
-     * @return string
+     * @return array
      */
-    protected function getSource()
+    protected function getSources()
     {
-        $path = $this->argument('file');
+        $sources = [];
 
-        return file_get_contents($path);
+        foreach ($this->argument('file') as $path) {
+            $sources[$path] = file_get_contents($path);
+        }
+
+        return $sources;
     }
 
     /**
