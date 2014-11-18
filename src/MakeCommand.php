@@ -132,6 +132,13 @@ class MakeCommand extends Command
                 'o',
                 InputOption::VALUE_OPTIONAL,
                 'If set, the output will be saved to that path instead of being dumped to stdout.',
+            ],
+            [
+                'no-minify',
+                'i',
+                InputOption::VALUE_OPTIONAL|InputOption::VALUE_IS_ARRAY,
+                'List of files that should be included in the bookmarklet but not minified.',
+                [],
             ]
         ];
     }
