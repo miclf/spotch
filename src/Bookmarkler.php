@@ -11,24 +11,9 @@ class Bookmarkler
      */
     public function make($source)
     {
-        $minified = $this->minify($source);
-
-        $encoded = $this->encode($minified);
+        $encoded = $this->encode($source);
 
         return 'javascript:(function(){'.$encoded.'})();';
-    }
-
-    /**
-     * Minify a string of JavaScript code.
-     *
-     * @param  string  $source
-     * @return string
-     */
-    protected function minify($source)
-    {
-        $minifier = new Minifier;
-
-        return $minifier->minify($source);
     }
 
     /**
