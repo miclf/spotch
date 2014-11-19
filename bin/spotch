@@ -7,7 +7,7 @@ if ($fromComposer = file_exists(__DIR__.'/../../../autoload.php')) {
     require __DIR__.'/../vendor/autoload.php';
 }
 
-$spotch = new Symfony\Component\Console\Application('Spotch', '0.1');
+$spotch = new Symfony\Component\Console\Application('Spotch', '0.2');
 
 $spotch->add(new Miclf\Spotch\MakeCommand);
 
