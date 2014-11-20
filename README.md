@@ -53,10 +53,8 @@ $ php vendor/bin/spotch make path/to/my/file.js --output path/to/save/bookmarkle
 
 The PHP classes that power spotch can also be used directly in your code. Here they are:
 
-- **`\Miclf\Spotch\Minifier`** is the core of spotch. It provides some small public methods that can be used to work on JavaScript code. You can use it to minify, remove single-line comments, etc.
-- **`\Miclf\Spotch\Bookmarkler`** provides a single public method: `make`. It leverages the `Minifier` class and does a few extra steps in order to create a bookmarklet string from JavaScript code. If you intend to generate bookmarklets from your own PHP application, this is the class you will want to use.
-
-These classes do not use any dependency injection mechanism. You can instantiate them even without using an IoC container.
+- **`\Miclf\Spotch\Minifier`** is the core of spotch. It provides some small public methods that can work on JavaScript code. You can use it to minify or to do just parts of this process such as removing single-line comments, etc.
+- **`\Miclf\Spotch\Bookmarkler`** provides a single public method: `make`. It will simply encode what you give it and wrap the result in a ‘JavaScript URI’.
 
 ## Tests
 
