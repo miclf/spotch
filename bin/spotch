@@ -2,7 +2,7 @@
 <?php
 
 if ($fromComposer = file_exists(__DIR__.'/../../../autoload.php')) {
-    require $fromComposer;
+    require __DIR__.'/../../../autoload.php';
 } else {
     require __DIR__.'/../vendor/autoload.php';
 }
