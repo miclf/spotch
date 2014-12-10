@@ -116,7 +116,7 @@ class MakeCommand extends Command
 
         file_put_contents($path, $code);
 
-        $this->info("Bookmaklet code save to <comment>{$path}</comment>");
+        $this->info("Bookmaklet code saved to <comment>{$path}</comment>");
     }
 
     /**
