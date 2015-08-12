@@ -114,6 +114,13 @@ class MakeCommand extends Command
     {
         $path = $this->option('output');
 
+        if (!is_writable(dirname($path))) {
+
+            $this->error("[{$path}] is not writable");
+
+            return;
+        }
+
         file_put_contents($path, $code);
 
         $this->info("Bookmaklet code saved to <comment>{$path}</comment>");
